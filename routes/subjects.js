@@ -43,7 +43,6 @@ router
 })
 
 // ? Update subject
-
 .post('/subjects/update', function(req, res) {
     const {_id} = req.body;
     const {passed} = req.body;

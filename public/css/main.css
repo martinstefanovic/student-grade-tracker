@@ -61,11 +61,12 @@ label,.form-label{
     border: 1px solid var(--input-border-color);
     padding: .5rem .75rem;
     background-color: var(--input-bg-color);
-    color: var(--font-dark-color);
+    color: var(--font-color);
 }
 
 .form-control:focus{
     background-color:var(--input-bg-color);
+    color: var(--font-color);
 }
 
 .container-fluid{
@@ -199,7 +200,7 @@ label,.form-label{
 }
 
 .btn-small:hover{
-    background-color: #F8F9FA;
+    background-color: var(--app-bg);
     color: #DC2626;
     transition: all .3s;
 }
@@ -209,7 +210,7 @@ button.btn-edit{
 }
 
 .btn-edit:hover{
-    background-color: #F8F9FA;
+    background-color: var(--app-bg);
     color: #2563EB;
     transition: all .3s;
 }
@@ -344,4 +345,8 @@ button.btn-edit{
     width: 120px;
     transform: rotate(45deg);
     cursor: default;
+}
+
+.completed-true svg{
+    color: #10B981;
 }

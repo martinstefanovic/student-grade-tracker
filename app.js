@@ -1,10 +1,10 @@
 const express = require("express");
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
 const app = express();
 
 
-// * Connection to mongod
+// * Connection to mongodb
 mongoose.connect("mongodb://localhost/todo_express",
 {
     useNewUrlParser: true,
