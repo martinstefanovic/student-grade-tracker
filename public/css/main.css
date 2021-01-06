@@ -1,0 +1,347 @@
+/* * VARIABLES ========================= */
+
+:root{
+    --main-color: #4123F8;
+    --nav-color: #4123F8;
+    --app-bg: #ffffff;
+    --font-color: #000000;
+    --font-dark-color: #808080;
+    --card-color:#F8F9FA;
+    --card-border-color: #ececec;
+    --input-bg-color: #ffffff;
+    --input-border-color: #dedfe0;
+    --sub-nav-color: #F8F9FA;
+    --nav-link-color: #BBC4FC;
+    /* ? Severity colors */
+    --severity-normal-bg: #D1FAE5;
+    --severity-important-bg:#FEF3C7;
+    --severity-critical-bg:  #FEE2E2;
+}
+
+.darkmode{
+    --main-color: #4123F8;
+    --nav-color: #141319;
+    --app-bg: #1D1E23;
+    --font-color:#BDBDBE;
+    --font-dark-color: #86878B;
+    --card-color: #14151A;
+    --card-border-color: #27292F;
+    --input-bg-color: #25252D;
+    --input-border-color: #27292F;
+    --sub-nav-color:#2B2E35;
+    --nav-link-color: #86878B;
+    /* ? Severity colors */
+    --severity-normal-bg: rgba(209, 250, 229, .08);
+    --severity-important-bg:rgba(254, 243, 199, .08);
+    --severity-critical-bg:  rgba(254, 226, 226, .08);
+}
+
+/* * GLOBAL STYLE ====================== */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+}
+
+a,p,span,b,i,input,textarea, .form-control, li, button, .btn, label, select, .form-select{
+    font-size: .9rem;
+}
+
+body{
+    background-color: var(--app-bg);
+}
+
+label,.form-label{
+    color: var(--font-color);
+}
+
+.form-control, .form-select{
+    border: 1px solid var(--input-border-color);
+    padding: .5rem .75rem;
+    background-color: var(--input-bg-color);
+    color: var(--font-dark-color);
+}
+
+.form-control:focus{
+    background-color:var(--input-bg-color);
+}
+
+.container-fluid{
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.bg-success{
+    background-color: #10B981 !important;
+}
+
+/* * CARDS ============================= */
+
+.main-card{
+    background-color: var(--card-color);
+    border-radius: 7px;
+    padding: 1rem;
+    color: var(--font-color);
+}
+
+.main-card p{
+    margin-top: .3rem;
+}
+
+.main-card-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.sub-card{
+    background-color: var(--app-bg);
+    border-radius: 7px;
+    margin-bottom: 1rem;
+    border: 1px solid var(--card-border-color);
+}
+
+.sub-card-body{
+    padding: 1rem;
+}
+
+.sub-card-footer{
+    padding: .7rem 1rem;
+    border-top: 1px solid var(--card-border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sub-card:last-child{
+    margin-bottom: 0px;
+}
+
+.item-letter{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    background-color: #FCE7F3;
+    color: #BE185D;
+    cursor: pointer;
+}
+
+.date-added{
+    display: flex;
+    align-items: center;
+    color: var(--font-dark-color);
+}
+
+.date-added span{
+    margin-left: .4rem;
+}
+
+.severity{
+    text-transform: uppercase;
+    padding: .3rem .6rem;
+    border-radius: 4px;
+    font-size: .8rem;
+}
+
+.severity.normal{
+    background-color: var(--severity-normal-bg);
+    color: #10B981;
+}
+
+.severity.important{
+    background-color: var(--severity-important-bg);
+    color: #F59E0B;
+}
+
+.severity.critical{
+    background-color: var(--severity-critical-bg);
+    color: #EF4444;
+}
+
+
+/* * BUTTONS =========================== */
+
+.btn-main{
+    background-color: #4123F8;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .5rem 1rem;
+    border-radius: .25rem;
+}
+
+.btn-main:hover{
+    color: #fff;
+    background-color: #4e33fa;
+}
+
+.btn-main span{
+    margin-left: .3rem;
+}
+
+.btn-small{
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--card-border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    color: gray;
+    transition: all .3s;
+}
+
+.btn-small:hover{
+    background-color: #F8F9FA;
+    color: #DC2626;
+    transition: all .3s;
+}
+
+button.btn-edit{
+    background-color: var(--app-bg);
+}
+
+.btn-edit:hover{
+    background-color: #F8F9FA;
+    color: #2563EB;
+    transition: all .3s;
+}
+
+.btn-primary{
+    background-color: var(--main-color);
+    border: none;
+}
+
+/* * MODAL ============================= */
+
+.modal-content{
+    background-color: var(--app-bg);
+}
+
+.modal-footer{
+    border-top:1px solid var(--card-border-color);
+}
+
+.modal-header{
+    border-bottom: 1px solid var(--card-border-color);
+}
+
+.modal-title{
+    color: var(--font-color);
+}
+
+
+/* * NAVBAR ============================ */
+
+.main-navbar{
+    background-color: var(--nav-color);
+    color: #fff;
+    width: 100%;
+    height: 6.5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-navbar .navbar-nav{
+    flex-flow: row;
+}
+
+.main-navbar .nav-link{
+    color: var(--nav-link-color);
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+}
+
+.main-navbar .nav-link span{
+    margin-left: .4rem;
+}
+
+.main-navbar .nav-link.active{
+    color: rgba(255, 255, 255, 0.856);
+    background-color: #ffffff18;
+}
+
+.main-navbar .nav-link:hover{
+    background-color: #ffffff18;
+}
+
+/* * PROGRESS BAR =================== */
+
+.p-bar-0{
+    background-color: #EF4444;
+}
+.p-bar-1{
+    background-color: #10B981;
+}
+.p-bar-2{
+    background-color: #F59E0B;
+}
+.p-bar-3{
+    background-color: #3B82F6;
+}
+.p-bar-4{
+    background-color: #8B5CF6;
+}
+.p-bar-5{
+    background-color: #EC4899;
+}
+.p-bar-6{
+    background-color:#4F46E5;
+}
+
+
+/* * SUBNAV ========================= */
+
+.sub-nav{
+    width: 100%;
+    height: 6.5vh;
+    display: flex;
+    align-items: center;
+    background-color:var(--sub-nav-color);
+    border-bottom:1px solid var(--card-border-color);
+    padding: .5rem 0px;
+    color: var(--font-color);
+}
+
+/* * ALL TODOS PAGE ================ */
+
+#all-todos{
+    padding-top: 2rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow: scroll;
+    height: 87vh;
+}
+
+#all-todos .main-card{
+    margin-right: 1rem;
+    min-width: 400px;
+    max-width: 400px;
+    position: relative;
+    overflow: hidden;
+}
+
+.passed-badge{
+    background-color: #10B981;
+    color: #fff;
+    text-align: center;
+    position: absolute;
+    bottom: 17px;
+    left: -30px;
+    width: 120px;
+    transform: rotate(45deg);
+    cursor: default;
+}

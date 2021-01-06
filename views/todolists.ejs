@@ -1,0 +1,106 @@
+<!-- * Main header -->
+<%- include("./partials/header") %>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form id="updateStatusForm" action="/subjects/update" method="POST" class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Change subject status</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <input type="hidden" id="subjectIdField" class="form-control" name="_id" placeholder="id" readonly>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Goal grade</label>
+                <input type="text" class="form-control" name="goalGrade" id="goalGrade" placeholder="6-10">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Grade</label>
+              <input type="text" class="form-control" name="grade" id="grade" placeholder="6-10">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Status</label>
+                  <select class="form-select" name="passed" id="subjectStatus">
+                    <option selected>Chose status</option>
+                    <option value="true">Passed</option>
+                    <option value="false">Not passed</option>
+                  </select>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Update status</button>
+        </div>
+      </form>
+    </div>
+</div>
+
+<!-- * Main content -->
+<div id="all-todos" class="container-fluid">
+        
+
+    <% allSubjects.forEach( subject => { %>
+    <div class="main-card">
+
+        <% if(subject.passed == true){  %>
+        <div class="passed-badge">
+            <span>PASSED</span>
+        </div>
+        <% } %>
+        <div class="main-card-header">
+            <span class="text-uppercase d-flex align-items-center">
+                <%= subject.subject %>
+
+                <span class="badge bg-warning ms-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Goal grade"> <%= subject.goalGrade %> </span>
+                
+                <% if(subject.passed == true && subject.grade != null){  %>
+                    <span class="badge bg-success ms-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Grade"><%= subject.grade %></span>
+                <% } %>
+
+            </span>
+
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn-small btn-edit" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-subject-id="<%= subject._id %>" data-subject-grade="<%= subject.grade %>" data-subject-goal-grade="<%= subject.goalGrade %>" data-status="<%= subject.passed %>">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sliders" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z"/>
+                </svg>
+            </button>
+        </div>
+
+        <% allTodos.forEach( todo => { %>
+            <% if(subject.subject === todo.subject){  %>
+        <div class="sub-card">
+            <div class="sub-card-body">
+                <strong><%= todo.title %></strong>
+                <p><%= todo.todo %></p>
+                <span class="severity <%= todo.importantType %>"><%= todo.importantType %></span>
+            </div>
+            <div class="sub-card-footer">
+                <div class="date-added">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-event" viewBox="0 0 16 16">
+                      <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
+                      <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+                    </svg>
+                    <span><%= todo._id.getTimestamp().toString().substring(4,25) %></span>
+                </div>
+
+                <a href="/todolists/delete/<%= todo._id %>" class="btn-small" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete task">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+            <% } %>
+        <%  }) %>
+
+    </div>
+    <%  }) %>
+
+</div>
+
+<!-- * Footer -->
+<%- include("./partials/footer") %>
